@@ -1,4 +1,4 @@
-module Common where
+module Base.Common where
 
 data Tuple2 a = Tuple2 a a
 data Tuple4 a = Tuple4 a a a a

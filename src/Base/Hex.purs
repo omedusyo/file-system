@@ -1,7 +1,7 @@
-module Hex where
+module Base.Hex where
 
-import Bit ( Bit(..) )
-import Common ( Tuple4(..) )
+import Base.Bit ( Bit(..) )
+import Base.Common ( Tuple4(..) )
 
 data Hex =
     H0

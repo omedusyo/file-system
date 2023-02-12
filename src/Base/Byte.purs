@@ -1,10 +1,10 @@
-module Byte where
+module Base.Byte where
 
-import Common ( Tuple8(..) )
-import Common as Common
-import Bit ( Bit(..) )
-import Hex ( Hex )
-import Hex as Hex
+import Base.Common ( Tuple8(..) )
+import Base.Common as Common
+import Base.Bit ( Bit(..) )
+import Base.Hex ( Hex )
+import Base.Hex as Hex
 
 type Byte = Tuple8 Bit
 

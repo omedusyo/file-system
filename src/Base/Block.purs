@@ -1,11 +1,11 @@
-module Block where
+module Base.Block where
 
 import Prelude
 
-import Common ( Tuple8(..), Tuple8Index(..) )
-import Common as Common
-import Byte ( Byte )
-import Byte as Byte
+import Base.Common ( Tuple8(..), Tuple8Index(..) )
+import Base.Common as Common
+import Base.Byte ( Byte )
+import Base.Byte as Byte
 
 -- Blocks are finite size (actually size is a power of 8 i.e. 1, 8, 64, 512, 4096) byte arrays.
 -- You can access individual bytes, for not the bits.
@@ -59,7 +59,10 @@ type Block512 = Tuple8 Block64  -- 512 bytes (512 == 64*8)
 block512 :: Block64 -> Block64 -> Block64 -> Block64 -> Block64 -> Block64 -> Block64 -> Block64 -> Block512
 block512 = Tuple8
 
-data Block512Index = B512I (Tuple8Index Block64Index) -- 512 possible addresses
+data Block512Index = B512I (Tuple8Index Block64Index) -- 512 possible addresses.
+-- How can you encode a `Block512Index` value so that we can store it in a 512-block?
+-- You need 9 bits (2**9 == 512), so you actually need atleast 2 bytes..., this sucks.
+-- If we used 4096 == 2**12 byte blocks, we would need 12 bits to store a pointer so still 2 bytes.
 
 update512At :: Block512Index -> (Byte -> Byte) -> Block512 -> Block512
 update512At (B512I i) f =

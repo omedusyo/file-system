@@ -1,4 +1,4 @@
-module Bit where
+module Base.Bit where
 
 data Bit =
     B0
