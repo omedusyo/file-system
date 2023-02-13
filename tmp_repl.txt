@@ -28,3 +28,27 @@ or you can use
 
 
 
+
+import Base.Byte as Byte
+import Base.Byte ( Byte )
+import Base.Bit as Bit
+import Base.Bit ( Bit )
+
+Bit.bitsFromInt 8
+
+:r
+
+import Data.Int ( pow )
+
+:t pow
+
+pow 2 3
+
+pow 2 8
+
+import Data.Either
+
+:r
+
+Byte.fromInt1 0
+
