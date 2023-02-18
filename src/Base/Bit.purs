@@ -9,6 +9,8 @@ data Bit =
     B0
   | B1
 
+derive instance bitEq :: Eq Bit
+
 toString :: Bit -> String
 toString =
   case _ of

@@ -1,8 +1,18 @@
 module Base.Common where
 
+import Prelude
+
 data Tuple2 a = Tuple2 a a
 data Tuple4 a = Tuple4 a a a a
 data Tuple8 a = Tuple8 a a a a a a a a
+
+derive instance tuple2Eq :: Eq a => Eq (Tuple2 a)
+derive instance tuple4Eq :: Eq a => Eq (Tuple4 a)
+derive instance tuple8Eq :: Eq a => Eq (Tuple8 a)
+
+instance showTuple8 :: Show a => Show (Tuple8 a) where
+  show (Tuple8 x0 x1 x2 x3 x4 x5 x6 x7) =
+    "(Tuple8 " <> show x0 <> " " <> show x1 <> " " <> show x2 <> " " <> show x3 <> " " <> show x4 <> " " <> show x5 <> " " <> show x6 <> " " <> show x7 <> ")"
 
 repeat8 :: forall a . a -> Tuple8 a
 repeat8 x = Tuple8 x x x x x x x x

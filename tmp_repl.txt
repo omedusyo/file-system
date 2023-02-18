@@ -29,10 +29,14 @@ or you can use
 
 
 
+import Base.Common ( Tuple8(..) )
+import Base.Common as Common
 import Base.Byte as Byte
 import Base.Byte ( Byte )
 import Base.Bit as Bit
 import Base.Bit ( Bit )
+import Partition as Partition
+import Partition ( Partition, PartitionIndex, Region )
 
 Bit.bitsFromInt 8
 
@@ -50,9 +54,48 @@ import Data.Either
 
 :r
 
-Byte.encodeInt1 255
+Byte.encodeInt 255
 
-Byte.encodeInt1 259
+Byte.encodeInt 15
 
-Byte.decodeInt ((Byte.encodeInt1 (256 + 255)).byte0)
+Byte.decodeInt (Byte.encodeInt (256 + 255))
+
+Partition.encodePartitionIndex Nothing
+
+Partition.encodePartitionIndex (Just (3*256 + 16))
+
+
+:paste
+region0 =
+  { block0: Just 123
+  , block1: Nothing
+  , block2: Nothing
+  , block3: Nothing
+  , block4: Nothing
+  , block5: Nothing
+  , block6: Nothing
+  , indirectIndex: Nothing
+  , body0: Common.repeat8 Byte.zeros
+  , body1: Common.repeat8 Byte.zeros
+  } :: Region
+
+:r
+
+
+region0
+
+Partition.encodeRegion region0
+
+
+region0
+
+:paste
+foo1 =
+  { foo: 132
+  , bar: 123
+  }
+
+
+
+:t Partition.encodeRegion { block0 }
 
