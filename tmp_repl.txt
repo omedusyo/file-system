@@ -50,5 +50,9 @@ import Data.Either
 
 :r
 
-Byte.fromInt1 0
+Byte.encodeInt1 255
+
+Byte.encodeInt1 259
+
+Byte.decodeInt ((Byte.encodeInt1 (256 + 255)).byte0)
 

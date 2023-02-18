@@ -78,3 +78,9 @@ bitsFromInt n =
   case firstBit n of
     Just { bit, rest } -> bit : (bitsFromInt rest)
     Nothing -> Nil
+
+encodeInt :: Bit -> Int
+encodeInt =
+  case _ of
+      B0 -> 0
+      B1 -> 1
